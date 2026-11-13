@@ -241,9 +241,10 @@ class TestPurchases(unittest.TestCase):
 class TestMissionsAchievements(unittest.TestCase):
     def test_first_mission_completes(self):
         g = make_game()
-        for _ in range(200):
+        for i in range(200):
             g.now += 30
             g.state["last_tick"] = g.now
+            g.select_node(i % 6)
             g.do_mine(silent=True)
         self.assertGreaterEqual(g.state["mission_index"], 1)
         self.assertGreater(g.state["credits"], 50)

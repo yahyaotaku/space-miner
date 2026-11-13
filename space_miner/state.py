@@ -70,7 +70,9 @@ def new_state(now):
 
 
 def _new_planet_state(now, pid):
-    rng = random.Random(hash(pid) & 0xFFFFFFFF)
+    # Stable seed: random.Random(str) is deterministic across processes,
+    # unlike hash() which is salted per process.
+    rng = random.Random("nodes:" + pid)
     nodes = [roll_asteroid(rng, pid) for _ in range(NODES_PER_PLANET)]
     return {"unlocked": pid == "asteroid_01", "dev_level": 1, "xp": 0.0, "nodes": nodes}
 
