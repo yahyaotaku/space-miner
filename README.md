@@ -56,6 +56,21 @@ python3 main.py --reset    # erase save and start fresh
 python3 main.py --sim 3600 # headless simulation smoke test (3600 virtual seconds)
 ```
 
+## Executables
+
+**Windows .exe (no Python needed):**
+- Easiest: open the repo's **Actions** tab → *Build Windows EXE* → latest run →
+  download the **SPACE_MINER-windows-exe** artifact.
+- Or build locally: double-click `build_exe.bat` (needs Python installed);
+  the finished game appears at `dist\SPACE_MINER.exe`.
+
+**Any OS (Linux/macOS/Windows), single file:**
+```
+python3 SPACE_MINER.pyz        # committed at the repo root, zero dependencies
+./SPACE_MINER.pyz              # on Linux/macOS
+```
+Rebuild it after code changes with `./build_pyz.sh`.
+
 ## Project layout
 
 ```
