@@ -15,11 +15,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install PyInstaller
-        run: python -m pip install --upgrade pip pyinstaller
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip pygame pyinstaller
 
-      - name: Build SPACE_MINER.exe
-        run: pyinstaller --onefile --name SPACE_MINER --clean --noconfirm main.py
+      - name: Run test suite
+        run: python -m unittest discover -s tests -v
+
+      - name: Build SPACE_MINER.exe (graphical)
+        run: pyinstaller --onefile --name SPACE_MINER --clean --noconfirm gui_main.py
 
       - name: Upload EXE artifact
         uses: actions/upload-artifact@v4

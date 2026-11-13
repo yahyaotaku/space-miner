@@ -111,6 +111,14 @@ def show_offline_summary(g, io):
 
 
 def main():
+    if "--gui" in sys.argv:
+        try:
+            import pygame  # noqa: F401
+        except ImportError:
+            print("The graphical interface needs pygame:  pip install pygame")
+            return 1
+        from space_miner.gui.app import run_gui
+        return run_gui()
     reset = "--reset" in sys.argv
     if reset:
         for p in (save_sys.save_path(), save_sys.backup_path()):

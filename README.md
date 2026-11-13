@@ -2,12 +2,20 @@
 
 *From a tiny mining ship to a galactic empire.*
 
-A complete, playable **terminal-based idle/incremental game** written in pure Python 3
-(standard library only — no dependencies). Inspired by classic space-tycoon idle games.
+A complete, playable idle/incremental game in Python 3 with **two front-ends**:
 
-```
-python3 main.py
-```
+- **Graphical (pygame)** — starfield, clickable asteroids, lasers, particles, sound,
+  and full mouse-driven menus:
+  ```
+  pip install pygame
+  python3 gui_main.py        # or: python3 main.py --gui
+  ```
+- **Terminal (zero dependencies)** — colored ANSI dashboard, keyboard-driven:
+  ```
+  python3 main.py
+  ```
+
+Both front-ends share the same game core, so saves and progression are identical.
 
 ## Features
 
@@ -58,11 +66,12 @@ python3 main.py --sim 3600 # headless simulation smoke test (3600 virtual second
 
 ## Executables
 
-**Windows .exe (no Python needed):**
+**Windows .exe (no Python needed) — graphical version:**
 - Easiest: open the repo's **Actions** tab → *Build Windows EXE* → latest run →
-  download the **SPACE_MINER-windows-exe** artifact.
-- Or build locally: double-click `build_exe.bat` (needs Python installed);
+  download the **SPACE_MINER-windows-exe** artifact (CI also runs the test suite).
+- Or build locally: double-click `build_exe.bat` (needs Python + `pip install pygame`);
   the finished game appears at `dist\SPACE_MINER.exe`.
+- Note: `SPACE_MINER.pyz` is the **terminal** version (pygame is not bundled in it).
 
 **Any OS (Linux/macOS/Windows), single file:**
 ```
